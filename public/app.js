@@ -7,6 +7,7 @@ document.addEventListener("click", (event) => {
         });
     } 
     if (event.target.dataset.type === "update") {
+        console.log(content)
         const text = prompt("Edit message", content)
         if(text !== null){
             update(id, text).then(() => {location.reload()});

@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }))
 
 app.get("/", async (req,res) => {
-     res.render("index", {
+    res.render("index", {
         title: "Express App",
         notes: await getNotes(),
         created:false
@@ -33,6 +33,7 @@ app.post("/", async (req,res) => {
 })
 
 app.put(`/:id&:title`, async (req, res) => {
+    console.log(req.params)
     await updateNote(req.params)
     res.render("index", {
         title: "Express App",
