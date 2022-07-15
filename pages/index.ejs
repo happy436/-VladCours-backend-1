@@ -24,6 +24,11 @@
         src="/app.js"
         defer
     ></script>
+    <style>
+        .hide{
+            display:none;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,7 +58,9 @@
                     <button
                         class="btn btn-primary"
                         type="submit"
-                    >Create!</button>
+                    >
+                        Create!
+                    </button>
                 </form>
 
                 <% if (notes.length){ %>
@@ -64,18 +71,42 @@
                                     <div id="title">
                                         <%= notes[i].title %>
                                     </div>
-                                    <div>
+                                    <div class="card__form" hidden>
+                                        <input 
+                                            type="text"
+                                            name="title"
+                                            class="card__input-title"
+                                            value="<%= notes[i].title %>"
+                                        >
                                         <button
-                                            data-type="update"
+                                            class="btn btn-access"
+                                            data-type="save"
                                             data-id="<%= notes[i].id %>"
-                                            data-title="<%= notes[i].title %>"
-                                            class="btn btn-warning"
-                                        >Edit</button>
+                                        >
+                                            Save
+                                        </button>
+                                        <button
+                                            class="btn btn-danger"
+                                            data-type="close"
+                                        >
+                                            &times;
+                                        </button>
+                                    </div>
+                                    <div class="card__buttons">
+                                        <button
+                                            data-type="edit"
+                                            data-id="<%= notes[i].id %>"
+                                            class="btn btn-warning edit"
+                                        >
+                                            Edit
+                                        </button>
                                         <button
                                             data-type="remove"
                                             class="btn btn-danger"
                                             data-id="<%= notes[i].id %>"
-                                        >&times;</button>
+                                        >
+                                            Delete
+                                        </button>
                                     </div>
                                 </li>
                                 <% }%>
